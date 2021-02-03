@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -16,11 +16,16 @@ public class Main extends Application {
 			
 // instanciamos um obj loader do tipo FXMLLoader passando o caminho da View;			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
-// chamamos o load para carregar a view;			
-			Parent parent = loader.load();
+// vamos substituir o obj parent por um scrollPane;			
+			ScrollPane scrollPane = loader.load();
+			
+// macete para ajustar o MenuBar no ScrollPane;
+			scrollPane.setFitToHeight(true); // ajusta na altura;
+			scrollPane.setFitToWidth(true); // ajusta na largura;
+			
 /* Vamos criar um obj do tipo Scene que será a cena principal e já instaciamos a ...
-cena com o obj principal da view (que é um AnchorPane vazio);*/ 			
-			Scene mainScene = new Scene(parent);
+cena com o obj principal da view (que é um scrollPane);*/ 			
+			Scene mainScene = new Scene(scrollPane);
 // chamamos o palco da cena que veio no parametro do método setando a cena dele com cena principal;
 			primaryStage.setScene(mainScene);
 // definimos um título para o palco;
