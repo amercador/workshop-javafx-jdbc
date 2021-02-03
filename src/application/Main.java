@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	private static Scene mainScene;
+	
 	@Override
-	public void start(Stage primaryStage) {
+	public synchronized void start(Stage primaryStage) {
 		try {
 			
 // instanciamos um obj loader do tipo FXMLLoader passando o caminho da View;			
@@ -25,7 +27,7 @@ public class Main extends Application {
 			
 /* Vamos criar um obj do tipo Scene que será a cena principal e já instaciamos a ...
 cena com o obj principal da view (que é um scrollPane);*/ 			
-			Scene mainScene = new Scene(scrollPane);
+			mainScene = new Scene(scrollPane);
 // chamamos o palco da cena que veio no parametro do método setando a cena dele com cena principal;
 			primaryStage.setScene(mainScene);
 // definimos um título para o palco;
@@ -35,6 +37,10 @@ cena com o obj principal da view (que é um scrollPane);*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Scene getMainScene() {
+		return mainScene;
 	}
 
 	public static void main(String[] args) {
