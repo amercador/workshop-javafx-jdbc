@@ -13,7 +13,7 @@ public class Main extends Application {
 	private static Scene mainScene;
 	
 	@Override
-	public synchronized void start(Stage primaryStage) {
+	public void start(Stage primaryStage) {
 		try {
 			
 // instanciamos um obj loader do tipo FXMLLoader passando o caminho da View;			
